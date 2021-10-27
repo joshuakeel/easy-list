@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using EasyList.DataAccess;
+using Microsoft.AspNetCore.Http;
 
 namespace EasyList.Controllers
 {
@@ -23,8 +24,8 @@ namespace EasyList.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get([FromRoute] int id)
         {
             var listItem = _listItemRepository.Get(id);
@@ -37,7 +38,7 @@ namespace EasyList.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Delete([FromRoute] int id)
         {
             _listItemRepository.Delete(id);
@@ -46,13 +47,14 @@ namespace EasyList.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string name)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public ActionResult<ListItem> Post([FromBody] string name)
         {
             var listItem = new ListItem { Name = name };
 
-            _listItemRepository.Add(listItem);
+            listItem = _listItemRepository.Add(listItem);
 
-            //TODO: add post return body and 201 Created status
+            return CreatedAtAction(nameof(Get), new { id = listItem.Id }, listItem);
         }
     }
 }

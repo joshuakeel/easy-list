@@ -12,6 +12,18 @@ ol li {
 }
 
 .main {
-  max-width: 400px;
+  max-width: 800px;
   margin: auto;
+  font-size: 1.5rem;
+}
+
+input {
+  height: 1.75rem;
+  width: 20rem;
+}
+
+button[type="submit"] {
+  margin-left: 0.5rem;
+  height: 2rem;
+  width: 20rem;
 }

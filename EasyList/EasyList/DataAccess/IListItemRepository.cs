@@ -6,7 +6,7 @@ namespace EasyList.DataAccess
     {
         public List<ListItem> GetAll();
         public ListItem Get(int id);
-        public void Add(ListItem listItem);
+        public ListItem Add(ListItem listItem);
         public void Delete(int id);
     }
 }

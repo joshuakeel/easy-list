@@ -22,10 +22,12 @@ namespace EasyList.DataAccess
             return _dbContext.ListItems.SingleOrDefault(item => item.Id == id);
         }
 
-        public void Add(ListItem listItem)
+        public ListItem Add(ListItem listItem)
         {
             _dbContext.ListItems.Add(listItem);
             _dbContext.SaveChanges();
+
+            return listItem;
         }
 
         public void Delete(int id)

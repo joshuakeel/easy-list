@@ -2,16 +2,16 @@
   <h1>Easy List</h1>
 
   <ol>
-    <li *ngFor="let item of items">
-      {{ item }} <button (click)="deleteItem(item)">Delete</button>
+    <li *ngFor="let item of items; index as i">
+      {{ item.name }} <button (click)="deleteItem(i, item.id!)">Delete</button>
     </li>
   </ol>
 
   <input
-    [(ngModel)]="item"
+    [(ngModel)]="currentItem"
     type="text"
     placeholder="Add an item to your shopping list"
   />
 
-  <button type="submit" (click)="onAddItem(item)">Add item</button>
+  <button type="submit" (click)="addItem()">Add item</button>
 </div>

@@ -27,6 +27,17 @@ namespace EasyList
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyList", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.AddDbContext<EasyListDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EasyList")));
 
@@ -44,6 +55,8 @@ namespace EasyList
             }
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
