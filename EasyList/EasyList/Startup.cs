@@ -33,6 +33,7 @@ namespace EasyList
                     builder =>
                     {
                         builder.WithOrigins("http://localhost:4200")
+                        .WithOrigins("https://main.dnj5d0jkwssx5.amplifyapp.com")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });
