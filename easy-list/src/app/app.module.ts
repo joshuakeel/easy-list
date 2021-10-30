@@ -14,7 +14,7 @@ import { ApiModule } from './api/api.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ApiModule.forRoot({ rootUrl: 'http://3.83.98.214' }),
+    ApiModule.forRoot({ rootUrl: 'https://easylist.digitalroutines.org' }),
   ],
   providers: [],
   bootstrap: [AppComponent],
