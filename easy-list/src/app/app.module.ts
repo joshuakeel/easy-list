@@ -14,7 +14,7 @@ import { ApiModule } from './api/api.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ApiModule.forRoot({ rootUrl: 'http://localhost:5000' }),
+    ApiModule.forRoot({ rootUrl: 'http://3.83.98.214' }),
   ],
   providers: [],
   bootstrap: [AppComponent],

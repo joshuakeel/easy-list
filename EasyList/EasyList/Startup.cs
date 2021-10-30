@@ -45,7 +45,7 @@ namespace EasyList
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EasyListDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -64,6 +64,8 @@ namespace EasyList
             {
                 endpoints.MapControllers();
             });
+
+            dbContext.Database.Migrate();
         }
     }
 }
